@@ -7,9 +7,9 @@ terraform {
       version = "~> 6.0"
     }
   }
-  # backend "gcs" {
-  #    bucket = "retail-sim-dev-fc-lfstate"
-  #    prefix = "bootstrap"
-  #}
+  backend "gcs" {
+    bucket = "retail-sim-dev-fc-tfstate"
+    prefix = "bootstrap"
+  }
 
 }
