@@ -38,13 +38,14 @@ resource "google_iam_workload_identity_pool_provider" "github" {
 
 
   attribute_mapping = {
-    "google.subject"       = "assertion.sub"
-    "attribute.repository" = "assertion.repository"
-    "attribute.ref"        = "assertion.ref"
+    "google.subject"             = "assertion.sub"
+    "attribute.repository"       = "assertion.repository"
+    "attribute.repository_owner" = "assertion.repository_owner"
+    "attribute.ref"              = "assertion.ref"
   }
 
-  attribute_condition =  "assertion.repository_owner" == '${var.github_owner}'
-  oidc{
+  attribute_condition = "assertion.repository_owner == '${var.github_owner}'"
+  oidc {
     issuer_uri = "https://token.actions.githubusercontent.com"
   }
 }

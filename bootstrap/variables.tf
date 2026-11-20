@@ -23,7 +23,7 @@ variable "project_name" {
 
 variable "region" {
   type    = string
-  default = "europe-west16"
+  default = "europe-west6"
 }
 
 variable "budget_amount" {

@@ -74,7 +74,7 @@ resource "google_billing_budget" "monthly" {
   display_name    = "${var.project_id} monthly budget"
 
   budget_filter {
-    projects = ["projects/${google_project.deb.number}"]
+    projects = ["projects/${google_project.dev.number}"]
   }
 
   amount {
