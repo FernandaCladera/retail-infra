@@ -9,7 +9,7 @@ resource "google_service_account" "ecommerce_api" {
 }
 
 resource "google_service_account" "ecommerce_web" {
-  account_id   = "ecommerce_web"
+  account_id   = "ecommerce-web"
   display_name = "Cloud Run runtime: ecommerce-web"
 }
 
@@ -61,7 +61,7 @@ module "ecommerce_api" {
 
 # ── Web (Next.js) ──────────────────────────────────────────
 module "ecommerce_web" {
-  source                = "../../modules/cloud-run-service"
+  source                = "../../modules/cloud-run-services"
   name                  = "ecommerce-web"
   region                = var.region
   service_account_email = google_service_account.ecommerce_web.email

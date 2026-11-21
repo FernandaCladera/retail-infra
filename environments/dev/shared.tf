@@ -9,7 +9,7 @@ resource "google_artifact_registry_repository" "apps" {
 }
 
 # Identity the APP repos use to push images and deploy to Cloud Run
-resource "google_services_account" "github_deployer" {
+resource "google_service_account" "github_deployer" {
   account_id   = "github-deployer"
   display_name = "GitHub Actions - app deployments"
 }

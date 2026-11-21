@@ -65,7 +65,7 @@ resource "google_cloud_run_v2_service" "this" {
   }
   lifecycle {
     ignore_changes = [
-      template[0].continers[0].image,
+      template[0].containers[0].image,
       client,
       client_version
     ]
@@ -74,7 +74,7 @@ resource "google_cloud_run_v2_service" "this" {
 
 resource "google_cloud_run_v2_service_iam_member" "public" {
   count    = var.public ? 1 : 0
-  name     = google_cloud_run_v2_services.this.name
+  name     = google_cloud_run_v2_service.this.name
   location = google_cloud_run_v2_service.this.location
   role     = "roles/run.invoker"
   member   = "allUsers"
