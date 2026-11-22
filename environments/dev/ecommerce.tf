@@ -15,10 +15,11 @@ resource "google_service_account" "ecommerce_web" {
 
 # -- Database --------------------------------
 module "ecommerce_db" {
-  source        = "../../modules/cloud-sql-postgres"
-  name          = "ecommerce-db"
-  region        = var.region
-  database_name = "ecommerce"
+  source            = "../../modules/cloud-sql-postgres"
+  name              = "ecommerce-db"
+  region            = var.region
+  database_name     = "ecommerce"
+  activation_policy = "NEVER"
 }
 
 # -- Permissions for the API ----------------
@@ -30,7 +31,7 @@ resource "google_project_iam_member" "ecommerce_api_sql" {
 
 resource "google_secret_manager_secret_iam_member" "ecommerce_api_db_password" {
   secret_id = module.ecommerce_db.password_secret_id
-  role      = "roles/secretmanager.secretAccesor"
+  role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${google_service_account.ecommerce_api.email}"
 }
 
