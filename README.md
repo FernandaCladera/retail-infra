@@ -37,3 +37,4 @@ environments/
 .github/workflows/
     terraform-plan.yml
     terraform-apply.yml
+
