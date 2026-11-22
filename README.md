@@ -1,40 +1,34 @@
 # Infrastruture
 
-Main structure of the project
 
-.gitignore
+Setup for the infrastructure of the Retail Simulation Project on Google Cloud.
 
-bootstrap/
-    versions.tf
-    providers.tf
-    variables.tf
-    main.tf             <- folder + project + APIs + Bucket del state 
-    iam.tf
-    outputs.tf
-    terraform.tfvars
+## What it creates
 
-modules/
-    cloud-run-service/
-        main.tf
-        variables.tf
-        outputs.tf
-    cloud-sql-postgres/
-        main.tf
-        variables.tf
-        outputs.tf
+```
+organization                 (organization)
+└── retail-sim               (folder)
+    └── retail-sim-dev-fc    (project)
+        ├── state bucket, APIs, budget       ← bootstrap/
+        └── ecommerce: database, api, web    ← environments/dev/
+```
 
-environments/
-    dev/
-        versions.tf
-        backends.tf
-        providers.tf
-        variable.tf
-        shared.tf
-        ecommerce.tf
-        outputs.tf
-        terraform.tfvars
 
-.github/workflows/
-    terraform-plan.yml
-    terraform-apply.yml
+## Folders
+
+```
+bootstrap/          Run once. Creates the folder, the project,
+                    the bucket for the Terraform state and the GitHub login.
+
+modules/            Reusable pieces. 
+    cloud-run-services/     a Cloud Run service
+    cloud-sql-postgres/     a Postgres database + its password
+
+environments/dev/   Everything that lives inside the dev project.
+                    One file per system (ecommerce.tf, WIP: erp.tf, pim.tf).
+
+.github/workflows/  terraform-plan  → runs on every pull request
+                    terraform-apply → runs when merged to main
+```
+
 
