@@ -1,5 +1,6 @@
 # Infrastruture
 
+
 Setup for the infrastructure of the Retail Simulation Project on Google Cloud.
 
 ## What it creates
@@ -29,3 +30,5 @@ environments/dev/   Everything that lives inside the dev project.
 .github/workflows/  terraform-plan  → runs on every pull request
                     terraform-apply → runs when merged to main
 ```
+
+
