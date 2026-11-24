@@ -19,7 +19,7 @@ module "ecommerce_db" {
   name              = "ecommerce-db"
   region            = var.region
   database_name     = "ecommerce"
-  activation_policy = "NEVER"
+  activation_policy = "ALWAYS"
 }
 
 # -- Permissions for the API ----------------
