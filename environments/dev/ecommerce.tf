@@ -46,7 +46,7 @@ module "ecommerce_api" {
 
   env = {
     DB_HOST = "/cloudsql/${module.ecommerce_db.connection_name}"
-    BD_NAME = module.ecommerce_db.database_name
+    DB_NAME = module.ecommerce_db.database_name
     DB_USER = module.ecommerce_db.app_user
   }
   secret_env = {
